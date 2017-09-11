@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      >
+<head>
+    <meta charset="UTF-8"/>
+    <title>PQR | Personiv</title>
+    
+	<base href="/PQR/"></base>
+ 	
+ 	<link rel="shortcut icon" href="/PQR/assets/img/2Color-Favicon_512x512-1.png" />
+	<!-- Bootstrap CSS -->
+	<link href="/PQR/bower_components/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+	<!-- Custom Fonts -->
+    <link href="/PQR/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+	
+	<!-- Custom CSS -->
+	
+ 	<link href="/PQR/assets/css/bootstrap-modal.min.css" rel="stylesheet"/>
+ 	<link href="/PQR/assets/css/sb-admin-2.css" rel="stylesheet"/>
+   	<link href="/PQR/assets/css/main.css" rel="stylesheet"/>
+	
+	
+
+   
+</head>
+<body ng-app ='PqrApp'>
+
+<!-- page-wrapper -->
+<div id="wrapper">
+	<ui-view></ui-view>
+</div >
+
+<!-- /#page-wrapper -->
+
+<!-- jQuery -->
+<script type="text/javascript" src="/PQR/bower_components/jquery/dist/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script type="text/javascript" src="/PQR/bower_components/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>	
+
+<!-- Angular JS -->
+<script type="text/javascript" src="/PQR/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/PQR/bower_components/angular-ui-router/angular-ui-router.js"></script>
+
+<script type="text/javascript" src="/PQR/ng/app.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/department.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/login.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/position.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/productivity.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/project.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/navigation.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/dashboard.controller.js"></script>
+<script type="text/javascript" src="/PQR/ng/controllers/member.controller.js"></script>
+
+<script type="text/javascript" src="/PQR/ng/services/project.service.js"></script>
+
+<script src="/PQR/vendor/popper/popper.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/PQR/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script type="text/javascript" src="/PQR/bower_components/metisMenu/dist/metisMenu.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script type="text/javascript" src="/PQR/assets/js/sb-admin-2.js"></script>
+
+
+
+<script>
+app.controller('LandingPageController', function($rootScope, $scope, $state){
+	
+	
+}); 
+
+</script>
+</body>
+</html>
