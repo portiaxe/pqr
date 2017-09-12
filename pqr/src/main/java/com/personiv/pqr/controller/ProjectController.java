@@ -28,8 +28,16 @@ public class ProjectController {
 	public Project getProject(@PathVariable("id") int id){
 		return 	projectService.getProject(id);
 	}
+	
 	@RequestMapping(path = "/Projects/addProject",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	public Project AddProject(@RequestBody Project project){
+	public Project addProject(@RequestBody Project project){
+	 	
+			projectService.addProject(project);		
+		return project;
+	}
+	
+	@RequestMapping(path = "/Projects/deleteProject",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public Project deleteProject(@RequestBody Project project){
 	 	
 			projectService.addProject(project);		
 		return project;

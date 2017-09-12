@@ -22,6 +22,13 @@ app.controller('DeptProjController', function($rootScope, $scope, $state,DeptPro
 		console.log("add project");
 	}
 	
+	$scope.showTargets = function(){
+		console.log(targets);
+	}
+	$scope.showMembers = function(members){
+		console.log(members);
+	}
+	
 	$scope.showAddModal = function(dept_proj){
 		$scope.dept_proj = dept_proj;
 		console.log(dept_proj);

@@ -102,12 +102,13 @@ CREATE TABLE IF NOT EXISTS `positions` (
   `updated` datetime DEFAULT NULL,
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table pqr.positions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `positions` DISABLE KEYS */;
 INSERT INTO `positions` (`id`, `pos_name`, `created`, `updated`, `deleted`) VALUES
-	(1, 'QA', '2017-09-11 14:20:53', NULL, NULL);
+	(1, 'QA', '2017-09-11 14:20:53', NULL, NULL),
+	(2, 'Process Executive', '2017-09-12 22:48:00', NULL, NULL);
 /*!40000 ALTER TABLE `positions` ENABLE KEYS */;
 
 -- Dumping structure for table pqr.productivity
@@ -143,6 +144,34 @@ INSERT INTO `projects` (`id`, `proj_name`, `created`, `updated`, `deleted`) VALU
 	(3, 'ACQ Rejects', '2017-09-12 21:51:27', NULL, NULL),
 	(4, 'SEM Premium', '2017-09-12 21:54:09', '2017-09-12 21:55:40', '2017-09-12 21:55:48');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
+
+-- Dumping structure for table pqr.targets
+CREATE TABLE IF NOT EXISTS `targets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dep_proj_id` int(11) NOT NULL,
+  `position_id` int(11) NOT NULL,
+  `beg_prod` double NOT NULL,
+  `beg_qual` double NOT NULL,
+  `mod_prod` double NOT NULL,
+  `mod_qual` double NOT NULL,
+  `exp_prod` double NOT NULL,
+  `exp_qual` double NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dep_proj_id` (`dep_proj_id`),
+  KEY `position_id` (`position_id`),
+  CONSTRAINT `targets_ibfk_1` FOREIGN KEY (`dep_proj_id`) REFERENCES `department_projects` (`id`),
+  CONSTRAINT `targets_ibfk_2` FOREIGN KEY (`position_id`) REFERENCES `positions` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table pqr.targets: ~0 rows (approximately)
+/*!40000 ALTER TABLE `targets` DISABLE KEYS */;
+INSERT INTO `targets` (`id`, `dep_proj_id`, `position_id`, `beg_prod`, `beg_qual`, `mod_prod`, `mod_qual`, `exp_prod`, `exp_qual`, `created`, `updated`, `deleted`) VALUES
+	(1, 1, 1, 0, 0, 0, 0, 0, 0, '2017-09-12 22:46:21', NULL, NULL),
+	(2, 1, 2, 0, 0, 0, 0, 0, 0, '2017-09-12 22:48:16', NULL, NULL);
+/*!40000 ALTER TABLE `targets` ENABLE KEYS */;
 
 -- Dumping structure for table pqr.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -243,6 +272,19 @@ BEGIN
 	  FROM department_projects dp
 	  JOIN departments d ON dp.dep_id = d.id
 	  JOIN projects p ON dp.proj_id = p.id;
+END//
+DELIMITER ;
+
+-- Dumping structure for procedure pqr._proc_getDeptProjectTargets
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `_proc_getDeptProjectTargets`(
+	IN `proj_id` INT
+)
+BEGIN
+	SELECT *
+	  FROM targets t
+	 WHERE t.dep_proj_id = proj_id AND t.deleted is null;
+	
 END//
 DELIMITER ;
 

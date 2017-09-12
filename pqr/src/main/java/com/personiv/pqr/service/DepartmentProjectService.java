@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.personiv.pqr.dao.DepartmentProjectDao;
 import com.personiv.pqr.model.DepartmentProject;
+import com.personiv.pqr.model.Target;
 
 @Service
 public class DepartmentProjectService {
@@ -20,5 +21,9 @@ public class DepartmentProjectService {
 
 	public DepartmentProject getDepartmentProject(int id) {
 		return depProjDao.getDepartmentProject(id);
+	}
+
+	public List<Target> getDepartmentProjectTargets(int id) {
+		return depProjDao.getDepartmentProjectTargets(id);
 	}
 }
