@@ -1,4 +1,4 @@
-<div ng-include="'/PQR/partials/nav.html'"></div>
+
 <div class="content-wrapper">
       <div class="container-fluid">
    
@@ -94,13 +94,14 @@
             <form  ng-submit="addProject()">
               <span>Project Title</span>
               <input type="text" ng-model ="project.name" class="form-control" />
+              <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		            <button type="submit" class="btn btn-primary">Add</button>
+          	  </div>
             </form>
 
            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Add</a>
-          </div>
+         
         </div>
       </div>
     </div>

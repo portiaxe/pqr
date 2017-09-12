@@ -12,9 +12,9 @@ app.factory('ProjectDataOp', ['$http', function($http) {
 	ProjectDataOp.addProject = function(project){
 		return $http({
 			method: 'POST',
-			 url: 'Project/addProject',
+			 url: 'Projects/addProject',
 			 dataType: 'json',
-			 data: book,
+			 data: project,
 			 headers: { 'Content-Type': 'application/json; charset=UTF-8' }
 		})
 	}
@@ -22,9 +22,9 @@ app.factory('ProjectDataOp', ['$http', function($http) {
 	ProjectDataOp.updateProject = function(project){
 		return $http({
 			method: 'POST',
-			 url: 'Project/updateProject',
+			 url: 'Projects/updateProject',
 			 dataType: 'json',
-			 data: book,
+			 data: project,
 			 headers: { 'Content-Type': 'application/json; charset=UTF-8' }
 		})
 	}

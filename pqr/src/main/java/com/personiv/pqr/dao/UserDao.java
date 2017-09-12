@@ -34,14 +34,16 @@ public class UserDao extends JdbcDaoSupport{
     }
     
 	public List<User> getUsers() {
-		String query  = "call GetUsers()";
-		String query2 = "call GetUserRoles(?)";
+		String query  = "call _proc_getUsers()";
+		String query2 = "call _proc_getUserRoles(?)";
 		
 		List<User> users = jdbcTemplate.query(query,new BeanPropertyRowMapper<User>(User.class));
+		
 		for(User u: users) {
 			List<Role> roles = jdbcTemplate.query(query2,new Object[]{u.getId()},new BeanPropertyRowMapper<Role>(Role.class));		
 			u.setRoles(roles);
 		}
+		
 		return users;
 	}
 

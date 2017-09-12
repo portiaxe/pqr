@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired
 	private UserService  userService;
 	
-	@RequestMapping(value="/User",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Users",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUsers(){
 		List<User> users  = userService.getUsers();
 		return users;

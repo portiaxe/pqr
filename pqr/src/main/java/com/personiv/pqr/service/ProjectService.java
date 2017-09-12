@@ -17,4 +17,12 @@ public class ProjectService {
 		List<Project> projects = projectDao.getProjects();
 		return projects;
 	}
+
+	public Project addProject(Project project) {
+		return projectDao.addProject(project);
+	}
+
+	public Project getProject(int id) {
+		return projectDao.getProject(id);
+	}
 }

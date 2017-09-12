@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -29,8 +30,31 @@ public class ProjectDao extends JdbcDaoSupport{
     }
     
     public List<Project> getProjects() {
-		String query  = "call GetProjects()";
+		String query  = "call _proc_getProjects()";
 		List<Project> projects = jdbcTemplate.query(query,new BeanPropertyRowMapper<Project>(Project.class));
 		return projects;
+	}
+
+	public Project addProject(Project project) {
+		
+		String query  = "call _proc_addProject(?)";
+		
+		jdbcTemplate.update(query,new Object[] {project.getName()});
+		
+		return project;
+	}
+
+	public Project getProject(int id) {
+		
+		String query  = "call _proc_getProjectById(?)";
+		Project project = null;
+		
+		try {
+			project = jdbcTemplate.queryForObject(query,new Object[] {id},new BeanPropertyRowMapper<Project>(Project.class));
+		}catch(EmptyResultDataAccessException e) {
+			
+		}
+		
+		return  project;
 	}
 }

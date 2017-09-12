@@ -1,0 +1,141 @@
+
+<div class="content-wrapper">
+      <div class="container-fluid">
+   
+        <!-- Example Tables Card -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-table"></i> Users <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add-modal" style="vertical-align:top;" ng-click ="showAddModal()">
+            	<i class="fa fa-plus"></i> New User
+             </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>User</th>                   
+                    <th>Email</th>
+                    <th>Date Created</th>
+                    <th>Date Updated</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in userList">
+			         <td>{{ user.fname }} {{user.lname}}</td>
+			         
+			         <td>{{ user.email}}</td>
+			         <td>{{ user.created}}</td>
+			         <td>{{ user.updated}}</td>
+			         <td>
+			         	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal" ng-click="showEditModal(user)"> <i class="fa fa-pencil">edit</i></button>
+          				<button type="button" class="btn btn-danger" ng-click="deleteUser(user)">  <i class="fa fa-times">delete</i>
+         			</td>
+      			</tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small">
+            Updated yesterday at 11:59 PM
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright &copy; Your Website 2017</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <!-- Add Member Modal -->
+    <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="add-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-position-label">Add User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  ng-submit="addUser()">
+              <span>Email</span>
+              <input type="text" ng-model ="user.email" class="form-control" />
+              <br />
+              
+              <span>Password</span>
+              <input type="password" ng-model ="user.password" class="form-control" />
+              <br />
+              <span>Confirm Password</span>
+              <input type="password" ng-model ="user.password2" class="form-control" />
+              <br />
+            </form>
+
+           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     <!-- Edit Project Modal -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="edit-label">Edit User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  ng-submit="editUser()">
+              <span>User</span>
+              <input type="text" ng-model ="user.name" class="form-control" />
+            </form>
+
+           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Submit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
