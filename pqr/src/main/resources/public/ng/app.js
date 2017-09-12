@@ -24,7 +24,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         url: '/departments',
         templateUrl: '/PQR/partials/departments.html', 
         controller: 'DepartmentController',
-    })
+    }) 
     .state("members", {
         url: '/members',
         templateUrl: '/PQR/partials/members.html', 
@@ -39,10 +39,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         url: '/projects',
         templateUrl: '/PQR/partials/projects.html', 
         controller: 'ProjectsController',
-    })  
-    .state("productivity", {
-        url: '/productivity',
-        templateUrl: '/PQR/partials/productivity.html', 
-        controller: 'ProductivityController',
+    }) 
+        
+    .state("users", {
+        url: '/users',
+        templateUrl: '/PQR/partials/users.html', 
+        controller: 'UserController',
+    })
+    
+    .state("department-projects", {
+        url: '/department-projects',
+        templateUrl: '/PQR/partials/dept_projects.html', 
+        controller: 'DeptProjController',
     })
 });

@@ -5,12 +5,7 @@ app.controller('ProjectsController', function($rootScope, $scope, $state,Project
 	
 	$scope.projectList =[];
 	
-	ProjectDataOp.getProjects()
-		.then(function(response){
-			$scope.projectList = response.data;
-		}).catch(function(error) {
-			console.log(error);
-		});
+	loadData();
 	
 	$scope.searchDB = function(){
 		console.log("search");
@@ -19,16 +14,31 @@ app.controller('ProjectsController', function($rootScope, $scope, $state,Project
 	$scope.searchProject = function(){}
 	
 	$scope.addProject = function(){
-		console.log("add project");
+		ProjectDataOp
+			.addProject($scope.project)
+			.then(function(response){
+				console.log(response);
+				loadData(); //refresh table contents
+			})
+			.catch(function(error){
+				console.log(error);
+			});
 	}
 	
-	$scope.showAddModal = function(project){
-		$scope.project = project;
-		console.log(project);
+	$scope.showAddModal = function(){
+		$scope.project ={};
 	}
 	$scope.showEditModal = function(project){
 		$scope.project = project;
 		console.log(project);
 	}
 	
+	function loadData(){
+		ProjectDataOp.getProjects()
+		.then(function(response){
+			$scope.projectList = response.data;
+		}).catch(function(error) {
+			console.log(error);
+		});
+	}
 }); 

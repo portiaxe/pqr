@@ -30,11 +30,17 @@ public class ResourceServerConfig  extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {		
 		http
+		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/","/login","/assets/**",
 				     "/bower_components/**","/vendor/**",
 				     "/ng","/ng/**","/partials",
 				     "/Projects/**",
+				     "/Positions/**",
+				     "/Departments/**",
+				     "/Users/**",
+				     "/DepartmentProjects/**",
+				     "/Members/**",
 				     "/partials/**","/Task/**","/user").permitAll()
 		.anyRequest().authenticated();
 		//.anyRequest().permitAll();			

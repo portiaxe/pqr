@@ -14,7 +14,7 @@
 
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>PQR | Personiv</title>
 	
 	<base href="/PQR/"></base>
     <!-- Bootstrap core CSS -->
@@ -32,7 +32,7 @@
   </head>
 
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-
+	<div ng-include="'/PQR/partials/nav.html'"></div>
 	<ui-view></ui-view>
 
     
@@ -65,8 +65,15 @@
 	<script type="text/javascript" src="/PQR/ng/controllers/navigation.controller.js"></script>
 	<script type="text/javascript" src="/PQR/ng/controllers/dashboard.controller.js"></script>
 	<script type="text/javascript" src="/PQR/ng/controllers/member.controller.js"></script>
+	<script type="text/javascript" src="/PQR/ng/controllers/user.controller.js"></script>
+	<script type="text/javascript" src="/PQR/ng/controllers/dept_proj.controller.js"></script>
 	
 	<script type="text/javascript" src="/PQR/ng/services/project.service.js"></script>
+	<script type="text/javascript" src="/PQR/ng/services/department.service.js"></script>
+	<script type="text/javascript" src="/PQR/ng/services/position.service.js"></script>
+	<script type="text/javascript" src="/PQR/ng/services/member.service.js"></script>
+	<script type="text/javascript" src="/PQR/ng/services/user.service.js"></script>
+	<script type="text/javascript" src="/PQR/ng/services/dept_proj.service.js"></script>
   </body>
 
 </html>
