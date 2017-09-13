@@ -4,6 +4,7 @@ app.controller('DeptProjController', function($rootScope, $scope, $state,DeptPro
 	$scope.dept_proj ={};
 	
 	$scope.dept_projList =[];
+	$scope.targets =[];
 	
 	DeptProjDataOp.getDeptProj()
 		.then(function(response){
@@ -22,8 +23,9 @@ app.controller('DeptProjController', function($rootScope, $scope, $state,DeptPro
 		console.log("add project");
 	}
 	
-	$scope.showTargets = function(){
+	$scope.showTargets = function(targets){
 		console.log(targets);
+		$scope.targets = targets;
 	}
 	$scope.showMembers = function(members){
 		console.log(members);

@@ -17,8 +17,9 @@ app.controller('ProjectsController', function($rootScope, $scope, $state,Project
 		ProjectDataOp
 			.addProject($scope.project)
 			.then(function(response){
-				console.log(response);
-				loadData(); //refresh table contents
+				$(".modal").modal("hide");
+				loadData();
+				$scope.book = {};
 			})
 			.catch(function(error){
 				console.log(error);
@@ -30,7 +31,7 @@ app.controller('ProjectsController', function($rootScope, $scope, $state,Project
 	}
 	$scope.showEditModal = function(project){
 		$scope.project = project;
-		console.log(project);
+		
 	}
 	
 	function loadData(){

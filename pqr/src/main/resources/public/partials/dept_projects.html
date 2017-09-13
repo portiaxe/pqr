@@ -27,7 +27,7 @@
                 <tr ng-repeat="dept_proj in dept_projList">
 			         <td>{{ dept_proj.department.name }}</td>			         
 			         <td>{{ dept_proj.project.name }}</td>	         		         
-			         <td ng-click = "showTargets(dept_proj.targets)">view targets</td>			         		         
+			         <td ng-click = "showTargets(dept_proj.targets)" data-toggle="modal" data-target ="#targetModal">view targets</td>			         		         
 			         <td ng-click = "showMembers(dept_proj.membesrs)">view members</td>
 			         <td>{{ dept_proj.created}}</td>
 			         <td>{{ dept_proj.updated}}</td>
@@ -84,7 +84,51 @@
       </div>
     </div>
     
-      <!-- Add Department Modal -->
+    <!-- Target Modal -->
+    <div class="modal fade" id="targetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Project Targets</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+	          <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+	            <thead>
+	              <tr>
+	                <th>Position</th>
+	                <th>Beginner productivity</th>
+	                <th>Beginner quality</th>
+	                <th>Moderate productivity</th>  
+	                <th>Moderate quality</th>            
+	                <th>Experienced productivity</th>          
+	                <th>Experienced quality</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat ="target in targets">
+	            		<td>{{target.position.name}}</td>
+	            		<td>{{target.beginnerProductivity}}</td>
+	            		<td>{{target.beginnerQuality}}</td>
+	            		<td>{{target.moderateProductivity}}</td>
+	            		<td>{{target.moderateQuality}}</td>
+	            		<td>{{target.experiencedProductivity}}</td>
+	            		<td>{{target.experiencedQuality}}</td>
+	            	</tr>
+	            </tbody>
+	          </table>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+    
+    <!-- Add Department Modal -->
     <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="add-label" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

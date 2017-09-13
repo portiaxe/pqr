@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.personiv.pqr.model.Department;
 import com.personiv.pqr.model.DepartmentProject;
 import com.personiv.pqr.model.Member;
+import com.personiv.pqr.model.Position;
 import com.personiv.pqr.model.Project;
 import com.personiv.pqr.model.Target;
 
@@ -46,6 +47,11 @@ public class DepartmentProjectDao extends JdbcDaoSupport{
     			Department d = jdbcTemplate.queryForObject("call _proc_getDeptById(?)",new Object[] {dp.getDepartmentId()},new BeanPropertyRowMapper<Department>(Department.class));
     			
     			List<Target> targets =jdbcTemplate.query("call _proc_getDeptProjectTargets(?)",new Object[] {dp.getId()},new BeanPropertyRowMapper<Target>(Target.class));
+    			
+    			for(Target target: targets) {
+    				Position pos = jdbcTemplate.queryForObject("call _proc_getPositionById(?)", new Object[] {target.getPositionId()},new BeanPropertyRowMapper<Position>(Position.class));
+    				target.setPosition(pos);
+    			}
     			
     			dp.setProject(p);
     			dp.setDepartment(d);
